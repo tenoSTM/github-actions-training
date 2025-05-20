@@ -1,0 +1,16 @@
+name: Matrix Lab
+
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix-job:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        node: [14, 16]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v3.9.1
+        with:
+          node-version: ${{ matrix.node }}
